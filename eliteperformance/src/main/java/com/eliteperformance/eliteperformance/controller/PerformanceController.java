@@ -23,9 +23,9 @@ public class PerformanceController {
 
     // POST /api/performances/calculate
     @PostMapping("/calculate")
-    @PreAuthorize("hasRole('MANAGER') or hasRole('ADMIN')")
-    public ResponseEntity<BonusResponseDTO> calculate(
-            @Valid @RequestBody KpiRequestDTO dto) {
+    @PreAuthorize("hasRole('EMPLOYEE') or hasRole('MANAGER') or hasRole('ADMIN')")
+public ResponseEntity<BonusResponseDTO> calculate(
+        @Valid @RequestBody KpiRequestDTO dto) { 
 
         BonusResponseDTO result = service.calculateBonus(dto);
         return ResponseEntity.ok(result);
